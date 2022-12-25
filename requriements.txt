@@ -1,0 +1,12 @@
+streamlit
+requests
+pycountry
+yFinance
+pandas
+datetime
+plotly
+nsepython
+tensorflow
+scikit-learn
+sklearn
+numpy
