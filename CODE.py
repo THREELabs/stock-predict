@@ -277,7 +277,7 @@ st.sidebar.write("##")
 butt = st.sidebar.button("Enter")
 if butt:
     with st.empty():
-        st.write("Wait")
+        st.subheader("Please wait results are being prepared.")
         tickr = a.tick()
         data = None
         if tickr:
