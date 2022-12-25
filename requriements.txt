@@ -1,7 +1,11 @@
 streamlit
+streamlit_lottie
 requests
+newsapi-python
+pycountry
 yFinance
 pandas
+wikipedia
 datetime
 plotly
 tensorflow
