@@ -1,5 +1,5 @@
 streamlit
-yfinance
+yFinance
 tensorflow
 sklearn
 numpy
