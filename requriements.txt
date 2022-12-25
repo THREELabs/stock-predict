@@ -1,12 +1,8 @@
 streamlit
-requests
-pycountry
-yFinance
-pandas
-datetime
-plotly
-nsepython
+yfinance
 tensorflow
-scikit-learn
 sklearn
 numpy
+plotly
+pandas
+datetime
