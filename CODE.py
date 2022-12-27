@@ -2,14 +2,13 @@ import streamlit as st
 import yfinance as y
 from tensorflow.keras.layers import Dense, LSTM
 from tensorflow.keras.models import Sequential
-# from keras.layers import Dense,LSTM
-# from keras.models import Sequential
 from sklearn.preprocessing import MinMaxScaler
 import numpy as np
 import plotly.graph_objs as go
 import pandas as pd
 import datetime
 
+# setting configuration class
 class config:
     def __init__(self):
         self.configuration = """ <style>
@@ -20,8 +19,8 @@ class config:
     def conf(self):
         st.set_page_config(page_title="  Forecast By Investant", page_icon=":mag_right:", layout="wide")
         st.markdown(self.configuration, unsafe_allow_html=True)
-
-
+        
+# getting the ticker values of the companies using this class
 class Asset:
     dic = {'1 Day': 1, '1 Week': 7, '15 Days': 15, '1 Month': 30, '2 Months': 60, '3 Months': 90}
     futInterval = None
@@ -97,10 +96,7 @@ class Asset:
             self.t = y.Ticker(self.tickr)
             return self.t
 
-
-
-
-
+# building data from the ticker and date data
 class Data:
     def __init__(self,tickr):
         self.data = tickr.history(period='5y', interval='1d')
@@ -108,7 +104,7 @@ class Data:
     def getData(self):
         return self.data
 
-
+# Model Building
 class Model:
     def __init__(self,data):
         self.data = data
@@ -139,7 +135,6 @@ class Model:
             test_size = len(sd1) - training_size
             train_data, test_data = sd1[0:training_size, :], sd1[training_size:len(sd1), :1]
 
-            # giving class name in which the method is to avoid errors we ues Model.create_dataset()
             X_train, y_train = Model.create_dataset(train_data, 100)
             X_test, ytest = Model.create_dataset(test_data, 100)
 
@@ -159,7 +154,7 @@ class Model:
         except Exception as e:
             pass
 
-
+# Building Predictions
 class Forecast:
     def __init__(self, tickr, data,model):
         self.model = model
@@ -181,8 +176,6 @@ class Forecast:
             test_size = len(sd1) - training_size
             train_data, test_data = sd1[0:training_size, :], sd1[training_size:len(sd1), :1]
 
-            # 819-101 =718
-            # m= Model(data)
             X_train, y_train = Model.create_dataset(train_data, 100)
             X_test, ytest = Model.create_dataset(test_data, 100)
 
@@ -197,7 +190,6 @@ class Forecast:
             n_steps = 100
             i = 0
             while (i < self.dic[self.futInterval]):
-
                 if (len(temp_input) > 100):
                     x_input = np.array(temp_input[1:])
                     x_input = x_input.reshape(1, -1)
