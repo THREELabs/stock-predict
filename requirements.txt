@@ -9,6 +9,6 @@ wikipedia
 datetime
 plotly
 tensorflow
-scikit-learn
 sklearn
+scikit-learn
 numpy
