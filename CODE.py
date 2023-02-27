@@ -281,5 +281,3 @@ if butt:
         st.write('')
     f = Forecast(tickr, data, model)
     f.forecast()
-
-
