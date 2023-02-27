@@ -45,6 +45,7 @@ class Asset:
             nasd[i] = j
 
         opt = []
+        company=None
         if index == "S&P 500":
             # variable for ptr
             comp = st.sidebar.text_input("Enter Company Name")
