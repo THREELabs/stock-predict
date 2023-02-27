@@ -226,7 +226,7 @@ class Forecast:
         # Display of results
     def forecast(self,company):
         try:
-            st.header(f"**{company}**)
+            st.header(f"**{company}**")
             st.write("##")
 
             st.header(tickr.info['longName'])
