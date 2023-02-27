@@ -24,6 +24,7 @@ class config:
 class Asset:
     dic = {'1 Day': 1, '1 Week': 7, '15 Days': 15, '1 Month': 30, '2 Months': 60, '3 Months': 90}
     futInterval = None
+    c=None
     def __init__(self):
         indexes = ["S&P 500", "NASDAQ-100", " "]
         index = st.sidebar.selectbox("Select Index", options=indexes, index=2)
@@ -90,11 +91,11 @@ class Asset:
         st.sidebar.write("##")
 
         Asset.futInterval = st.sidebar.selectbox("Select The Period For Future Predictions", options=Asset.dic.keys())
-
+        Asset.c=company
     def tick(self):
         if self.tickr != None :
             self.t = y.Ticker(self.tickr)
-            return self.t
+            return (self.t,Asset.c)
 
 # building data from the ticker and date data
 class Data:
@@ -147,7 +148,7 @@ class Model:
             model.add(Dense(1))
             model.compile(loss='mean_squared_error', optimizer='adam',metrics=['mape'])
 
-            model.fit(X_train, y_train, validation_data=(X_test, ytest), epochs=30, batch_size=24, verbose=1,workers=4,
+            model.fit(X_train, y_train, validation_data=(X_test, ytest), epochs=1, batch_size=24, verbose=1,workers=4,
                       use_multiprocessing=True)
 
             return model
@@ -223,15 +224,9 @@ class Forecast:
             pass
 
         # Display of results
-    def forecast(self):
+    def forecast(self,company):
         try:
-            try:
-                if tickr.info['logo_url']:
-                    logo = '<img src=%s>' % tickr.info['logo_url']
-                    st.markdown(logo, unsafe_allow_html=True)
-            except:
-                pass
-
+            st.header(f"**{company}**)
             st.write("##")
 
             st.header(tickr.info['longName'])
@@ -256,6 +251,8 @@ class Forecast:
                 high=high
             )])
             st.plotly_chart(fig)
+        
+                      
         except Exception as e:
             pass
 
@@ -270,7 +267,7 @@ butt = st.sidebar.button("Enter")
 if butt:
     with st.empty():
         st.header('Please wait results are being prepared')
-        tickr = a.tick()
+        tickr,company = a.tick()
         data = None
         if tickr:
             data = Data(tickr)
@@ -280,4 +277,4 @@ if butt:
         model = m.makeModel()
         st.write('')
     f = Forecast(tickr, data, model)
-    f.forecast()
+    f.forecast(company)
