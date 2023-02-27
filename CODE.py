@@ -229,11 +229,7 @@ class Forecast:
         try:
             st.header(f"**{company}**")
             st.write("##")
-
-            st.header(tickr.info['longName'])
-            st.write("##")
-
-            st.write("##")
+            
             st.header(f"Forecast for the next {self.futInterval}")
             st.header("Predictions Data")
             st.write(self.df)
