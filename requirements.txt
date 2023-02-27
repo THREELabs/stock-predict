@@ -10,5 +10,4 @@ datetime
 plotly
 tensorflow
 scikit-learn
-sklearn
 numpy
