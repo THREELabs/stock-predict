@@ -66,14 +66,12 @@ The working of the project is divided into 4 steps
 <a id="installation"></a><h2>Installation</h2>
 The Code is written in Python 3.10. If you don't have Python installed you can find it [here](https://www.python.org/downloads/). If you are using a lower version of Python you can upgrade using the pip package, ensuring you have the latest version of pip. To install the required packages and libraries, run this command in the project directory after [cloning](https://www.howtogeek.com/451360/how-to-clone-a-github-repository/) the repository:
 
-``` pip install -r requirements.txt
-```
+``` pip install -r requirements.txt```
 
 
 <a id="running"></a><h2>Execution</h2>
 
-```streamlit run appName.py
-```
+```streamlit run appName.py```
 
 <a id="deploy"></a><h2>Deployment on Streamlit Cloud</h2>
 
