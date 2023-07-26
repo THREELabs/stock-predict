@@ -12,6 +12,7 @@
 + [Technologies Used](#tech)
 + [Team](#team)
 + [LICENSE](LICENSE)
++ [Disclaimer](#disclaimer)
 
 
 <a id="demo"></a><h2>Demo</h2>
@@ -101,3 +102,6 @@ The Code is written in Python 3.10. If you don't have Python installed you can f
 
 <a id="license"></a><h2>LICENSE</h2>
 [MIT LICENSE](LICENSE)
+
+## Disclaimer
+This program is just for educational purpose and not for financial use purposes.
