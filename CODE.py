@@ -37,7 +37,7 @@ class Asset:
         for i, j in zip(spcomp, spsym):
             sp[i] = j
 
-        nasUrl = pd.read_html('https://en.wikipedia.org/wiki/Nasdaq-100#Components')
+        nasUrl = pd.read_html('https://en.wikipedia.org/wiki/AMC_Theatres')
         nasCom = nasUrl[4]['Company']
         nasSym = nasUrl[4]['Ticker']
         nasd = {}
